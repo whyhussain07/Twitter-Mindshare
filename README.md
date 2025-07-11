@@ -51,17 +51,25 @@ python Twitter-Mindshare.py
 5. The script scrapes project docs, generates posts, and saves results in `/output`.
 
 ## Output
+
 - Each project gets a text file named after it, e.g., `output/ProjectName.txt`
 - Posts contain a clean intro, 3-5 bullets with bold headers, emojis, and a casual question.
 
 ## Notes
+
 - Network connection required for doc scraping and Groq API calls.
+- 
 - Rate limiting and error handling are basic; adjust as needed for scale.
 
-## License
-This script is provided as-is without warranty. Modify and use it freely.
+## ✅ License
 
----
+- This script is proprietary and provided only for personal or internal use by the original user or team.
 
-If you find this helpful or want to suggest improvements, feel free to reach out!
+- ❌ You may not redistribute, resell, sublicense, or publicly share this code.
+
+- ✅ You may modify it privately for your own workflows.
+
+- 🧠 All intellectual property rights belong to the original creator.
+
+Contact the author if you wish to license this for broader use.
 
