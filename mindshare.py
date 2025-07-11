@@ -2,10 +2,33 @@ import os
 import time
 import random
 import requests
+import getpass
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from groq import Groq
 
+# 🔐 Google Sheets-based Password Authentication
+def verify_user(username, passcode):
+    url = "https://script.google.com/macros/s/AKfycbzp_d25kladySsd2Y-tTuKvi4lNx4Q792J1vNK-fJWt_jv5Nde3OOd-bdAVJ7A-rBQ_JA/exec"
+    try:
+        ip = requests.get("https://api.ipify.org").text.strip()
+        response = requests.get(url, params={"username": username, "passcode": passcode, "ip": ip})
+        return response.text.strip() == "VALID"
+    except Exception as e:
+        print("⚠️ Failed to verify user:", e)
+        return False
+
+print("🔐 Authentication Required")
+input_username = input("👤 Enter your username: ").strip()
+input_passcode = getpass.getpass("🔑 Enter your passcode: ").strip()
+
+if not verify_user(input_username, input_passcode):
+    print("⛔ Access denied. Invalid username or passcode.")
+    exit()
+else:
+    print("✅ Access granted. Starting bot...\n")
+
+# 🔧 Load API Key
 load_dotenv()
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
@@ -122,7 +145,6 @@ Docs:
         )
         full = res.choices[0].message.content.strip()
 
-        # Extract intro and bullets from response
         lines = full.splitlines()
         intro_lines = []
         bullet_lines = []
