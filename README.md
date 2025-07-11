@@ -43,7 +43,7 @@ ProjectName → ProjectType
 
 3. Run the script:
 ```bash
-python your_script.py
+python Twitter-Mindshare.py
 ```
 
 4. Enter your username and passcode when prompted.
